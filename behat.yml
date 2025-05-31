@@ -1,0 +1,12 @@
+default:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/Behat/Features"
+      contexts:
+        - Behat\Context\Users\UserContext
+        - Behat\Context\Hotels\HotelContext
+        - Behat\Context\Hotels\RoomContext
+        - Behat\Context\Bookings\BookingContext
+        - Behat\Context\Shared\Common\DateContext
+        - Tests\Behat\Context\ApiContext

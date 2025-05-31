@@ -1,0 +1,56 @@
+# Dependencies
+/vendor/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.behat.example
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+
+# Cache and temporary files
+/cache/
+/tmp/
+*.cache
+*.tmp
+
+# Build and compiled files
+/build/
+/dist/
+*.compiled.*
+*.min.*
+
+# Testing
+/coverage/
+.phpunit.result.cache
+behat.yml.local
+
+# Composer
+composer.phar
+composer.lock
+
+# Other
+*.bak
+*~
