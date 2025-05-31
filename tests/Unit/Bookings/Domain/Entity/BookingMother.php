@@ -13,6 +13,12 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\DateMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\IntegerMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Factory class for creating Booking test instances.
+ * 
+ * This class provides methods to create Booking entities with random or specific values
+ * for testing purposes. It ensures consistent test data generation across the test suite.
+ */
 class BookingMother
 {
     public static function create(

@@ -2,13 +2,13 @@
 
 namespace Apps\Bookings\Mapper;
 
-use Apps\Bookings\Request\CreateBookingControllerRequest;
+use Apps\Bookings\Request\CreateBookingListControllerRequest;
 use Src\Bookings\Application\Request\BookingItem;
-use Src\Bookings\Application\Request\CreateBookingUseCaseRequest;
+use Src\Bookings\Application\Request\CreateBookingListUseCaseRequest;
 
-class CreateBookingRequestMapper
+class CreateBookingListRequestMapper
 {
-    public function fromRequest(CreateBookingControllerRequest $request): CreateBookingUseCaseRequest
+    public function fromRequest(CreateBookingListControllerRequest $request): CreateBookingListUseCaseRequest
     {
         $bookingItems = collect($request->input('bookings'))
             ->map(fn (array $item) => new BookingItem(
@@ -19,6 +19,6 @@ class CreateBookingRequestMapper
             ))
             ->toArray();
 
-        return new CreateBookingUseCaseRequest($bookingItems);
+        return new CreateBookingListUseCaseRequest($bookingItems);
     }
 }

@@ -6,10 +6,18 @@ namespace Src\Hotels\Hotels\Domain\Response;
 
 use Src\Hotels\Hotels\Domain\ValueObject\HotelUserCount;
 
+/**
+ * Get Hotel User Count List Service Response.
+ * 
+ * This class represents the response data from a hotel user count list operation.
+ * It encapsulates an array of hotel user count data.
+ */
 class GetHotelUserCountListServiceResponse
 {
     /**
-     * @param HotelUserCount[] $hotelUserCounts
+     * Creates a new GetHotelUserCountListServiceResponse instance.
+     * 
+     * @param HotelUserCount[] $hotelUserCounts Array of hotel user count data
      */
     public function __construct(
         private array $hotelUserCounts
@@ -17,7 +25,9 @@ class GetHotelUserCountListServiceResponse
     }
 
     /**
-     * @return HotelUserCount[]
+     * Gets the list of hotel user counts.
+     * 
+     * @return HotelUserCount[] Array of hotel user count data
      */
     public function hotelUserCounts(): array
     {

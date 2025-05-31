@@ -10,6 +10,12 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\EmailMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\WordMother;
 
+/**
+ * Factory class for creating User test instances.
+ * 
+ * This class provides methods to create User entities with random or specific values
+ * for testing purposes. It ensures consistent test data generation across the test suite.
+ */
 class UserMother
 {
     public static function create(

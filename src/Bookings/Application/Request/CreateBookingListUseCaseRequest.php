@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Bookings\Application\Request;
 
-class CreateBookingUseCaseRequest
+class CreateBookingListUseCaseRequest
 {
     /**
      * @param BookingItem[] $bookingList

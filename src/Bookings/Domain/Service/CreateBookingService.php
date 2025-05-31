@@ -11,6 +11,10 @@ use Src\Bookings\Domain\Response\CreateBookingServiceResponse;
 use Src\Bookings\Domain\ValueObject\BookingId;
 use Src\Shared\Common\Domain\Service\UuidGenerator\UuidGenerator;
 
+/**
+ * Service responsible for creating new bookings.
+ * This service handles the creation of booking entities and their persistence.
+ */
 class CreateBookingService
 {
     public function __construct(
@@ -19,6 +23,17 @@ class CreateBookingService
     ) {
     }
 
+    /**
+     * Creates a new booking with the provided data.
+     * 
+     * The process:
+     * 1. Generates a new UUID for the booking
+     * 2. Creates a new Booking entity with all required data
+     * 3. Persists the booking through the repository
+     * 
+     * @param CreateBookingServiceRequest $request The booking data
+     * @return CreateBookingServiceResponse Response containing the created booking
+     */
     public function execute(CreateBookingServiceRequest $request): CreateBookingServiceResponse
     {
         $uuid = $this->uuidGenerator->generate();

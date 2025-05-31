@@ -11,6 +11,16 @@ use Src\Hotels\Hotels\Domain\ValueObject\HotelCountry;
 use Src\Hotels\Hotels\Domain\ValueObject\HotelId;
 use Src\Hotels\Hotels\Domain\ValueObject\HotelName;
 
+/**
+ * Behat context for managing hotel-related scenarios.
+ *
+ * This context provides step definitions for:
+ * - Setting up hotel test data
+ * - Cleaning up hotel data between scenarios
+ *
+ * It handles the creation of hotels in the system
+ * for acceptance testing purposes.
+ */
 class HotelContext extends RawMinkContext
 {
     /**

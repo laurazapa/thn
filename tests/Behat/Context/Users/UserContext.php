@@ -10,6 +10,16 @@ use Src\Users\Domain\ValueObject\UserEmail;
 use Src\Users\Domain\ValueObject\UserId;
 use Src\Users\Domain\ValueObject\UserName;
 
+/**
+ * Behat context for managing user-related scenarios.
+ *
+ * This context provides step definitions for:
+ * - Setting up user test data
+ * - Cleaning up user data between scenarios
+ *
+ * It handles the creation of users in the system
+ * for acceptance testing purposes.
+ */
 class UserContext extends RawMinkContext
 {
     /**

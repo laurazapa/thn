@@ -14,6 +14,14 @@ use Tests\TestCase;
 use Tests\Unit\Hotels\Rooms\Domain\Entity\RoomMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the SearchRoomService.
+ * 
+ * This test suite verifies the behavior of the SearchRoomService when:
+ * - Searching for an existing room with relations
+ * - Handling non-existent room scenarios
+ * - Proper response formatting for search results
+ */
 class SearchRoomServiceTest extends TestCase
 {
     private SearchRoomService $sut;

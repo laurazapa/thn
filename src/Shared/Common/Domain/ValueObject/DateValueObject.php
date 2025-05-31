@@ -6,6 +6,12 @@ namespace Src\Shared\Common\Domain\ValueObject;
 
 use Carbon\Carbon;
 
+/**
+ * Date Value Object.
+ *
+ * This class represents a date value in the domain.
+ * It provides validation and type safety for date values.
+ */
 abstract class DateValueObject
 {
     public function __construct(private Carbon $value)

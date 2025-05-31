@@ -13,6 +13,14 @@ use Src\Hotels\Hotels\Domain\ValueObject\HotelUserCount;
 use Tests\TestCase;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the GetHotelUserCountListService.
+ * 
+ * This test suite verifies the behavior of the GetHotelUserCountListService when:
+ * - Counting unique users per hotel
+ * - Handling scenarios with no hotels
+ * - Proper response formatting with user counts
+ */
 class GetHotelUserCountListServiceTest extends TestCase
 {
     private GetHotelUserCountListService $sut;

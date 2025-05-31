@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Src\Bookings\Domain\Response;
 
 use Src\Bookings\Domain\Entity\Booking;

@@ -7,6 +7,14 @@ namespace Tests\Unit\Shared\Common\Infrastructure\Service\UuidGenerator;
 use Src\Shared\Common\Infrastructure\Service\UuidGenerator\LaravelUuidGenerator;
 use Tests\TestCase;
 
+/**
+ * Test suite for the LaravelUuidGenerator.
+ * 
+ * This test suite verifies the behavior of the LaravelUuidGenerator when:
+ * - Generating valid UUIDs
+ * - Ensuring UUID format compliance
+ * - Generating unique UUIDs across multiple calls
+ */
 class LaravelUuidGeneratorTest extends TestCase
 {
     private LaravelUuidGenerator $sut;

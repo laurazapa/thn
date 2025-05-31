@@ -8,9 +8,22 @@ use PHPUnit\Framework\TestCase;
 use Src\Shared\Common\Domain\Exception\InvalidRequestException;
 use Src\Shared\Common\Domain\ValueObject\EmailValueObject;
 
-// Anonymous class to test abstract VO
+/**
+ * Concrete implementation of EmailValueObject for testing purposes.
+ * 
+ * This class extends the abstract EmailValueObject to allow testing
+ * its functionality in a concrete context.
+ */
 final class TestEmailValueObject extends EmailValueObject {}
 
+/**
+ * Test suite for the EmailValueObject.
+ * 
+ * This test suite verifies the behavior of the EmailValueObject when:
+ * - Creating valid email addresses
+ * - Handling invalid email formats
+ * - Validating email format rules
+ */
 class EmailValueObjectTest extends TestCase
 {
     public function test_should_create_email_value_object_with_valid_email(): void

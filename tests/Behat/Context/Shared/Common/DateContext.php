@@ -5,6 +5,11 @@ namespace Behat\Context\Shared\Common;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Carbon\Carbon;
 
+/**
+ * Behat context for managing date-related scenarios.
+ *
+ * This context allows setting up test dates
+ */
 class DateContext extends RawMinkContext
 {
     /**

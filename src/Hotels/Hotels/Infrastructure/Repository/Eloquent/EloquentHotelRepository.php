@@ -9,8 +9,22 @@ use Src\Hotels\Hotels\Domain\Repository\HotelRepository;
 use Src\Hotels\Hotels\Domain\ValueObject\HotelId;
 use Src\Hotels\Hotels\Domain\ValueObject\HotelUserCount;
 
+/**
+ * Eloquent Hotel Repository Implementation.
+ *
+ * This class implements the HotelRepository interface using Laravel's Eloquent ORM.
+ * It provides concrete implementations for hotel persistence operations and
+ * hotel statistics retrieval.
+ */
 class EloquentHotelRepository implements HotelRepository
 {
+    /**
+     * Finds a hotel by its ID using Eloquent ORM.
+     *
+     * @param HotelId $hotelId The unique identifier of the hotel to find
+     * @param array $relations Optional array of relations to eager load
+     * @return Hotel|null The found hotel or null if not found
+     */
     public function find(HotelId $hotelId, array $relations = []): ?Hotel
     {
         return Hotel::query()
@@ -19,7 +33,14 @@ class EloquentHotelRepository implements HotelRepository
     }
 
     /**
-     * @return HotelUserCount[]
+     * Gets the count of unique users per hotel.
+     *
+     * This method performs a database query that:
+     * 1. Joins the hotels and bookings tables
+     * 2. Groups by hotel ID
+     * 3. Counts distinct user IDs per hotel
+     *
+     * @return HotelUserCount[] Array of hotel user count data
      */
     public function getUniqueUsersPerHotel(): array
     {

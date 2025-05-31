@@ -7,14 +7,13 @@ This is a Laravel project following Domain-Driven Design (DDD) principles. The p
 - PHP 8.4 or higher (^8.4)
 - Laravel 12.0
 - Composer
-- SQLite (for development)
+- SQLite
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd ddd-laravel
+git clone https://github.com/laurazapa/thn.git
 ```
 
 2. Install PHP dependencies:

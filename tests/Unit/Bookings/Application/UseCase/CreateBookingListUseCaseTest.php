@@ -6,10 +6,10 @@ namespace Tests\Unit\Bookings\Application\UseCase;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use Src\Bookings\Application\Request\BookingItem;
-use Src\Bookings\Application\Request\CreateBookingUseCaseRequest;
+use Src\Bookings\Application\Request\CreateBookingListUseCaseRequest;
 use Src\Bookings\Application\Response\BookingValidationError;
-use Src\Bookings\Application\Response\CreateBookingUseCaseResponse;
-use Src\Bookings\Application\UseCase\CreateBookingUseCase;
+use Src\Bookings\Application\Response\CreateBookingListUseCaseResponse;
+use Src\Bookings\Application\UseCase\CreateBookingListUseCase;
 use Src\Bookings\Domain\Exception\BookingDatesAreInThePastException;
 use Src\Bookings\Domain\Exception\RoomIsAlreadyBookedInTheseDaysException;
 use Src\Bookings\Domain\Request\CreateBookingServiceRequest;
@@ -35,9 +35,17 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\DateMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\IntegerMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
-class CreateBookingUseCaseTest extends TestCase
+/**
+ * Test suite for the CreateBookingListUseCase.
+ * 
+ * This test suite verifies the behavior of the CreateBookingListUseCase when:
+ * - All bookings in the list are valid and can be created
+ * - Some bookings fail validation and return appropriate errors
+ * - Room does not exist and throws appropriate exception
+ */
+class CreateBookingListUseCaseTest extends TestCase
 {
-    private CreateBookingUseCase $sut;
+    private CreateBookingListUseCase $sut;
     private MockObject $validateBookingService;
     private MockObject $createBookingService;
     private MockObject $findRoomService;
@@ -52,7 +60,7 @@ class CreateBookingUseCaseTest extends TestCase
         $this->findRoomService = $this->createMock(FindRoomService::class);
         $this->transactionManager = $this->createMock(TransactionManager::class);
 
-        $this->sut = new CreateBookingUseCase(
+        $this->sut = new CreateBookingListUseCase(
             $this->validateBookingService,
             $this->createBookingService,
             $this->findRoomService,
@@ -79,7 +87,7 @@ class CreateBookingUseCaseTest extends TestCase
             checkOutDate: $checkOutDate->value()->toDateString(),
         );
 
-        $request = new CreateBookingUseCaseRequest([$bookingItem]);
+        $request = new CreateBookingListUseCaseRequest([$bookingItem]);
 
         $room = RoomMother::create(
             roomId: $roomIdVO,
@@ -129,7 +137,7 @@ class CreateBookingUseCaseTest extends TestCase
             ->with($createServiceRequest)
             ->willReturn(new CreateBookingServiceResponse($booking));
 
-        $expected = new CreateBookingUseCaseResponse(
+        $expected = new CreateBookingListUseCaseResponse(
             success: true,
             bookingIdList: [$booking->id()->value()]
         );
@@ -156,7 +164,7 @@ class CreateBookingUseCaseTest extends TestCase
             checkOutDate: $checkOutDate->value()->toDateString(),
         );
 
-        $request = new CreateBookingUseCaseRequest([$bookingItem]);
+        $request = new CreateBookingListUseCaseRequest([$bookingItem]);
 
         $validateServiceRequest = new ValidateBookingServiceRequest(
             roomId: new RoomId($bookingItem->roomId()),
@@ -169,7 +177,7 @@ class CreateBookingUseCaseTest extends TestCase
             ->willThrowException(new RoomIsAlreadyBookedInTheseDaysException($roomIdVO, $checkInDate, $checkOutDate));
 
         $message = "Room with id {$roomId} is already booked between {$checkInDate->value()->format('Y-m-d')} and {$checkOutDate->value()->format('Y-m-d')}";
-        $expected = new CreateBookingUseCaseResponse(
+        $expected = new CreateBookingListUseCaseResponse(
             success: false,
             errorList: [new BookingValidationError($message)]
         );
@@ -208,7 +216,7 @@ class CreateBookingUseCaseTest extends TestCase
             checkOutDate: $checkOutDate->value()->toDateString(),
         );
 
-        $request = new CreateBookingUseCaseRequest([$bookingItem]);
+        $request = new CreateBookingListUseCaseRequest([$bookingItem]);
 
         $validateServiceRequest = new ValidateBookingServiceRequest(
             roomId: $roomIdVO,

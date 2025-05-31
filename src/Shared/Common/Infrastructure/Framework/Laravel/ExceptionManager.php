@@ -10,8 +10,25 @@ use Src\Shared\Common\Domain\Exception\ForbiddenRequestException;
 use Src\Shared\Common\Domain\Exception\InvalidRequestException;
 use Throwable;
 
+/**
+ * Exception Manager.
+ * 
+ * This class manages the global exception handling for the application.
+ * It maps domain exceptions to appropriate HTTP responses with corresponding status codes.
+ * 
+ * Exception mappings:
+ * - DataNotFoundException -> 404 Not Found
+ * - InvalidRequestException -> 400 Bad Request
+ * - ForbiddenRequestException -> 403 Forbidden
+ * - Any other exception -> 500 Internal Server Error
+ */
 class ExceptionManager
 {
+    /**
+     * Configures the exception handling for the application.
+     * 
+     * @param Exceptions $exceptions Laravel's exception configuration
+     */
     public static function execute(Exceptions $exceptions): void
     {
         $exceptions->render(function (DataNotFoundException $e) {

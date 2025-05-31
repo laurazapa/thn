@@ -10,6 +10,16 @@ use Src\Hotels\Rooms\Domain\Entity\Room;
 use Src\Hotels\Rooms\Domain\ValueObject\RoomId;
 use Src\Hotels\Rooms\Domain\ValueObject\RoomLabel;
 
+/**
+ * Behat context for managing room-related scenarios.
+ *
+ * This context provides step definitions for:
+ * - Setting up room test data
+ * - Cleaning up room data between scenarios
+ *
+ * It handles the creation of rooms in the system
+ * for acceptance testing purposes.
+ */
 class RoomContext extends RawMinkContext
 {
     /**

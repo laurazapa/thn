@@ -18,6 +18,13 @@ use Tests\Unit\Hotels\Rooms\Domain\Entity\RoomMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 use Src\Hotels\Hotels\Domain\Exception\HotelNotFoundException;
 
+/**
+ * Test suite for the GetHotelUseCase.
+ *
+ * This test suite verifies the behavior of the GetHotelUseCase when:
+ * - Retrieving an existing hotel with its rooms with proper response formatting
+ * - Handling non-existent hotel scenarios
+ */
 class GetHotelUseCaseTest extends TestCase
 {
     private GetHotelUseCase $sut;

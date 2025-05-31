@@ -6,7 +6,7 @@ namespace Apps\Bookings\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateBookingControllerRequest extends FormRequest
+class CreateBookingListControllerRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

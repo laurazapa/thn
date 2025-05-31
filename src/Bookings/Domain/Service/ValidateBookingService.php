@@ -10,6 +10,10 @@ use Src\Bookings\Domain\Exception\RoomIsAlreadyBookedInTheseDaysException;
 use Src\Bookings\Domain\Repository\BookingRepository;
 use Src\Bookings\Domain\Request\ValidateBookingServiceRequest;
 
+/**
+ * Service responsible for validating booking requests.
+ * This service ensures that bookings meet all business rules before creation.
+ */
 class ValidateBookingService
 {
     public function __construct(
@@ -18,8 +22,14 @@ class ValidateBookingService
     }
 
     /**
-     * @throws BookingDatesAreInThePastException
-     * @throws RoomIsAlreadyBookedInTheseDaysException
+     * Executes the booking validation process.
+     * Validates that:
+     * 1. Booking dates are not in the past
+     * 2. Room is available for the selected dates
+     * 
+     * @param ValidateBookingServiceRequest $request The booking request to validate
+     * @throws BookingDatesAreInThePastException If check-in date is in the past
+     * @throws RoomIsAlreadyBookedInTheseDaysException If room is already booked for the selected dates
      */
     public function execute(ValidateBookingServiceRequest $request): void
     {
@@ -29,7 +39,10 @@ class ValidateBookingService
     }
 
     /**
-     * @throws BookingDatesAreInThePastException
+     * Validates that the booking dates are not in the past.
+     * 
+     * @param ValidateBookingServiceRequest $request The booking request to validate
+     * @throws BookingDatesAreInThePastException If check-in date is before today
      */
     private function validateDatesAreNotInThePast(ValidateBookingServiceRequest $request): void
     {
@@ -43,7 +56,11 @@ class ValidateBookingService
     }
 
     /**
-     * @throws RoomIsAlreadyBookedInTheseDaysException
+     * Validates that the room is available for the selected dates.
+     * Checks if there are any existing bookings that overlap with the requested dates.
+     * 
+     * @param ValidateBookingServiceRequest $request The booking request to validate
+     * @throws RoomIsAlreadyBookedInTheseDaysException If room is already booked for the selected dates
      */
     private function validateRoomIsNotBookedInTheseDates(ValidateBookingServiceRequest $request): void
     {

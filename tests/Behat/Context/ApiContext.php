@@ -10,6 +10,16 @@ use Illuminate\Foundation\Testing\Concerns\MakesHttpRequests;
 use Tests\CreatesApplication;
 use Exception;
 
+/**
+ * Behat context for managing API-related scenarios.
+ *
+ * This context provides step definitions for:
+ * - Making API requests
+ * - Verifying API responses
+ *
+ * It handles the interaction with the API endpoints
+ * for acceptance testing purposes.
+ */
 final class ApiContext implements Context
 {
     use CreatesApplication, MakesHttpRequests;
@@ -23,7 +33,7 @@ final class ApiContext implements Context
     }
 
     /**
-     * @When I send a GET request to :url:
+     * @When I send a GET request to :url
      */
     public function iSendAGetRequestTo($path): void
     {

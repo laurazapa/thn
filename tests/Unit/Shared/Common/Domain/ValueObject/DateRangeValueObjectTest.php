@@ -10,6 +10,22 @@ use Src\Shared\Common\Domain\Exception\InvalidRequestException;
 use Src\Shared\Common\Domain\ValueObject\DateRangeValueObject;
 use Src\Shared\Common\Domain\ValueObject\DateValueObject;
 
+/**
+ * Concrete implementation of DateRangeValueObject for testing purposes.
+ * 
+ * This class extends the abstract DateRangeValueObject to allow testing
+ * its functionality in a concrete context.
+ */
+final class TestDateRangeValueObject extends DateRangeValueObject {}
+
+/**
+ * Test suite for the DateRangeValueObject.
+ * 
+ * This test suite verifies the behavior of the DateRangeValueObject when:
+ * - Creating valid date ranges
+ * - Handling invalid date ranges (start after end)
+ * - Converting to string representation
+ */
 class DateRangeValueObjectTest extends TestCase
 {
     private function makeDate(string $date): DateValueObject
@@ -22,7 +38,7 @@ class DateRangeValueObjectTest extends TestCase
         $start = $this->makeDate('2024-01-01');
         $end = $this->makeDate('2024-01-10');
 
-        $range = new DateRangeValueObject($start, $end);
+        $range = new TestDateRangeValueObject($start, $end);
 
         $this->assertSame('2024-01-01', $range->startDate()->value()->toDateString());
         $this->assertSame('2024-01-10', $range->endDate()->value()->toDateString());
@@ -36,7 +52,7 @@ class DateRangeValueObjectTest extends TestCase
         $start = $this->makeDate('2024-01-10');
         $end = $this->makeDate('2024-01-01');
 
-        new DateRangeValueObject($start, $end);
+        new TestDateRangeValueObject($start, $end);
     }
 
     public function test_to_string_returns_expected_format(): void
@@ -44,7 +60,7 @@ class DateRangeValueObjectTest extends TestCase
         $start = $this->makeDate('2024-03-01');
         $end = $this->makeDate('2024-03-05');
 
-        $range = new DateRangeValueObject($start, $end);
+        $range = new TestDateRangeValueObject($start, $end);
 
         $this->assertSame('2024-03-01,2024-03-05', (string) $range);
     }

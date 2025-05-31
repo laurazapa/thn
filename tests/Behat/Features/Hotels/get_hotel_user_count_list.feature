@@ -1,56 +1,77 @@
-@User @Hotel @Room
+# Feature: Get Hotel User Count List
+# This feature tests the retrieval of hotel popularity metrics by counting
+# the number of unique users who have booked rooms in each hotel.
+# It verifies that the system correctly:
+# - Counts unique users per hotel
+# - Handles hotels with multiple bookings by the same user
+# - Includes hotels with no bookings
+# - Returns proper hotel details with user counts
 
-Feature: I want to know how many unique users has booked rooms per hotel
+@User @Hotel @Room @Booking
 
+Feature: I want to see the number of users who have booked rooms in each hotel
+
+    # Background sets up the test environment with:
+    # - A specific test date
+    # - Three test users (Nagini, Tom Riddle, Voldemort)
+    # - Three hotels with their details
+    # - Four rooms across different hotels
+    # - Multiple bookings to test different scenarios:
+    #   * Hotel One: 2 unique users (Nagini and Tom Riddle)
+    #   * Hotel Two: 1 unique user (Nagini)
+    #   * Hotel Three: No bookings
     Background:
         Given there are the following users:
             | Id                                   | Name          | Email                  |
-            | 8d9f3bb0-f90e-4fc2-b564-9530a94b32c8 | Nagini        | nagini@gmail.com       |
-            | 52e7e83e-e683-4c41-93e9-cd45ab05076b | Tom Riddle    | tomriddle@gmail.com    |
-            | fb727e35-d2d9-4f27-b115-5ef317acd4de | Severus Snape | severussnape@gmail.com |
+            | 11111111-1111-1111-1111-111111111111 | Nagini        | nagini@gmail.com       |
+            | 22222222-2222-2222-2222-222222222222 | Tom Riddle    | tomriddle@gmail.com    |
+            | 33333333-3333-3333-3333-333333333333 | Severus Snape | severussnape@gmail.com |
 
         And there are the following hotels:
             | Id                                   | Name                  | City         | Country   |
-            | 22312e0e-819a-416b-a9ef-ca78e120de45 | Pramana Watu Kurung   | Ubud         | Indonesia |
-            | 49449fbe-025b-4c3a-a9b0-24c11b4bb6eb | El Racó de Madremanya | Madremanya   | España    |
-            | c01c8145-6369-40a6-a568-cf6c374a5735 | Mas La Casassa        | Sant Gregori | España    |
+            | 11111111-1111-1111-1111-111111111111 | Pramana Watu Kurung   | Ubud         | Indonesia |
+            | 22222222-2222-2222-2222-222222222222 | El Racó de Madremanya | Madremanya   | España    |
+            | 33333333-3333-3333-3333-333333333333 | Mas La Casassa        | Sant Gregori | España    |
 
         And there are the following rooms:
             | Id                                   | HotelId                              | Label    |
-            | 842b8630-05e3-4776-949d-5781790c35ed | 22312e0e-819a-416b-a9ef-ca78e120de45 | Suite    |
-            | 701039c2-c38c-41d5-bbb2-70f149606553 | 22312e0e-819a-416b-a9ef-ca78e120de45 | 1        |
-            | 5bfafa9b-ee92-4b1d-93b1-691167b74b00 | 22312e0e-819a-416b-a9ef-ca78e120de45 | 2        |
-            | 5c6f080d-db29-496f-9b0f-2c2cb00f0bab | 49449fbe-025b-4c3a-a9b0-24c11b4bb6eb | El Jardí |
+            | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | Suite    |
+            | 22222222-2222-2222-2222-222222222222 | 11111111-1111-1111-1111-111111111111 | 1        |
+            | 33333333-3333-3333-3333-333333333333 | 11111111-1111-1111-1111-111111111111 | 2        |
+            | 44444444-4444-4444-4444-444444444444 | 22222222-2222-2222-2222-222222222222 | El Jardí |
 
         And there are the following bookings:
             | Id                                   | UserId                               | RoomId                               | HotelId                              | CheckIn    | CheckOut   |
-            | 9c9e196f-9750-4a10-833f-f0d446680c2d | 8d9f3bb0-f90e-4fc2-b564-9530a94b32c8 | 842b8630-05e3-4776-949d-5781790c35ed | 22312e0e-819a-416b-a9ef-ca78e120de45 | 2025-07-24 | 2025-07-26 |
-            | 2e4d2b74-d85b-4f39-b358-afe54f893b7c | 8d9f3bb0-f90e-4fc2-b564-9530a94b32c8 | 842b8630-05e3-4776-949d-5781790c35ed | 22312e0e-819a-416b-a9ef-ca78e120de45 | 2025-09-01 | 2025-09-16 |
-            | 0899c55f-ce6d-4d4d-9d32-a158eb605787 | 52e7e83e-e683-4c41-93e9-cd45ab05076b | 701039c2-c38c-41d5-bbb2-70f149606553 | 22312e0e-819a-416b-a9ef-ca78e120de45 | 2025-06-01 | 2025-01-05 |
-            | e0b1559c-4c7a-4d64-8ff9-2e02544da502 | 52e7e83e-e683-4c41-93e9-cd45ab05076b | 5bfafa9b-ee92-4b1d-93b1-691167b74b00 | 22312e0e-819a-416b-a9ef-ca78e120de45 | 2025-07-01 | 2025-07-05 |
-            | 86ef3c89-4cb1-4c11-99b5-73398f9c8d87 | 52e7e83e-e683-4c41-93e9-cd45ab05076b | 5c6f080d-db29-496f-9b0f-2c2cb00f0bab | 49449fbe-025b-4c3a-a9b0-24c11b4bb6eb | 2025-08-01 | 2025-08-05 |
+            | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | 2025-07-24 | 2025-07-26 |
+            | 22222222-2222-2222-2222-222222222222 | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | 11111111-1111-1111-1111-111111111111 | 2025-09-01 | 2025-09-16 |
+            | 33333333-3333-3333-3333-333333333333 | 22222222-2222-2222-2222-222222222222 | 22222222-2222-2222-2222-222222222222 | 11111111-1111-1111-1111-111111111111 | 2025-06-01 | 2025-01-05 |
+            | 44444444-4444-4444-4444-444444444444 | 22222222-2222-2222-2222-222222222222 | 33333333-3333-3333-3333-333333333333 | 11111111-1111-1111-1111-111111111111 | 2025-07-01 | 2025-07-05 |
+            | 55555555-5555-5555-5555-555555555555 | 22222222-2222-2222-2222-222222222222 | 44444444-4444-4444-4444-444444444444 | 22222222-2222-2222-2222-222222222222 | 2025-08-01 | 2025-08-05 |
 
-    Scenario: Get the count of unique users per hotel with:
-                - one user (Nagini) that booked twice the Suite in Pramana Watu Kurung
-                - one user (Tom Riddle) that booked:
-                    - Rooms 1 and 2 in Pramana Watu Kurung once
-                    - Room El Jardí in El Racó de Madremanya once
-        When I send a GET request to "/api/hotels/user-count-list":
+    # Scenario: Get Hotel User Counts
+    # Tests the retrieval of user counts for all hotels
+    # Verifies that the system correctly:
+    # - Counts unique users per hotel (not total bookings)
+    # - Includes hotels with no bookings (count = 0)
+    # - Returns proper hotel details with user counts
+    # - Maintains data consistency across multiple bookings
+    Scenario: I get the list of hotels with the number of users who have booked rooms in each hotel
+        When I send a GET request to "/api/hotels/user-count-list"
         Then the response status code should be 200
         Then the JSON should be equal to:
         """
         {
             "data": [
                 {
-                    "id": "22312e0e-819a-416b-a9ef-ca78e120de45",
+                    "id": "11111111-1111-1111-1111-111111111111",
                     "users": 2
                 },
                 {
-                    "id": "49449fbe-025b-4c3a-a9b0-24c11b4bb6eb",
+                    "id": "22222222-2222-2222-2222-222222222222",
                     "users": 1
                 },
                 {
-                    "id": "c01c8145-6369-40a6-a568-cf6c374a5735",
+                    "id": "33333333-3333-3333-3333-333333333333",
                     "users": 0
                 }
             ]

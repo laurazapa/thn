@@ -22,6 +22,14 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\DateMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\IntegerMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the CreateBookingService.
+ * 
+ * This test suite verifies the behavior of the CreateBookingService when:
+ * - Creating a new booking with valid data
+ * - Ensuring proper UUID generation
+ * - Verifying repository interaction
+ */
 class CreateBookingServiceTest extends TestCase
 {
     private CreateBookingService $sut;

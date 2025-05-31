@@ -20,6 +20,13 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\DateMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\IntegerMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the ValidateBookingService.
+ *
+ * This test suite verifies the validation rules for bookings:
+ * - Validates that dates are not in the past
+ * - Handles cases where room is already booked
+ */
 class ValidateBookingServiceTest extends TestCase
 {
     private ValidateBookingService $sut;

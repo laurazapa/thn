@@ -5,10 +5,19 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration for creating the hotels table.
+ * This table stores hotel information and serves as the parent table for rooms and bookings.
+ */
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Creates the hotels table with the following structure:
+     * - hotel_id: UUID primary key
+     * - name: Hotel name
+     * - city: City where the hotel is located
+     * - country: Country where the hotel is located
+     * - timestamps: created_at and updated_at
      */
     public function up(): void
     {
@@ -23,7 +32,8 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Drops the hotels table and all its data.
+     * This will cascade delete all related rooms and bookings due to foreign key constraints.
      */
     public function down(): void
     {

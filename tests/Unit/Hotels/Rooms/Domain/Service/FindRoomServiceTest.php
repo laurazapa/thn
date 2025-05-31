@@ -17,6 +17,14 @@ use Tests\TestCase;
 use Tests\Unit\Hotels\Rooms\Domain\Entity\RoomMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the FindRoomService.
+ * 
+ * This test suite verifies the behavior of the FindRoomService when:
+ * - Finding an existing room with relations
+ * - Handling non-existent room scenarios
+ * - Proper error handling and response formatting
+ */
 class FindRoomServiceTest extends TestCase
 {
     private FindRoomService $sut;

@@ -6,6 +6,14 @@ namespace Src\Bookings\Domain\ValueObject;
 
 use Src\Shared\Common\Domain\ValueObject\DateValueObject;
 
+/**
+ * Value object that represents a booking's check-out date.
+ * 
+ * This class extends DateValueObject to provide type safety and
+ * domain-specific meaning to check-out dates. It ensures that check-out
+ * dates are always valid dates and provides a clear semantic meaning
+ * in the domain context.
+ */
 final class CheckOutDate extends DateValueObject
 {
 }

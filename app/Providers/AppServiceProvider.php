@@ -14,8 +14,21 @@ use Src\Shared\Common\Domain\Transaction\TransactionManager;
 use Src\Shared\Common\Infrastructure\Service\UuidGenerator\LaravelUuidGenerator;
 use Src\Shared\Common\Infrastructure\Transaction\LaravelTransactionManager;
 
+/**
+ * Application Service Provider.
+ * 
+ * This class is responsible for binding interfaces to their concrete implementations
+ * in the application. It manages dependency injection for repositories and services.
+ */
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * The application's interface bindings.
+     * 
+     * Maps domain interfaces to their infrastructure implementations.
+     * 
+     * @var array<class-string, class-string>
+     */
     public array $bindings = [
         HotelRepository::class => EloquentHotelRepository::class,
         RoomRepository::class => EloquentRoomRepository::class,
@@ -26,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
+     * 
+     * This method is called during the service container binding phase.
      */
     public function register(): void
     {
@@ -34,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     * 
+     * This method is called after all other service providers have been registered.
      */
     public function boot(): void
     {

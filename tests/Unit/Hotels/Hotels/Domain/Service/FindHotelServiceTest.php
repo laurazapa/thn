@@ -17,6 +17,13 @@ use Tests\TestCase;
 use Tests\Unit\Hotels\Hotels\Domain\Entity\HotelMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
+/**
+ * Test suite for the FindHotelService.
+ *
+ * This test suite verifies the behavior of the FindHotelService when:
+ * - Finding an existing hotel with relations
+ * - Handling non-existent hotel scenarios
+ */
 class FindHotelServiceTest extends TestCase
 {
     private FindHotelService $sut;
