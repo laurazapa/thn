@@ -1,103 +1,137 @@
 # THN Project
 
-This is a Laravel project following Domain-Driven Design (DDD) principles. The project is built with Laravel 12 and includes Behat for behavior-driven development testing.
+A Laravel-based hotel management system built with Domain-Driven Design (DDD) principles.
 
-## Requirements
+## 🚀 Features
+
+- Hotel management with rooms and bookings
+- Domain-Driven Design architecture
+- Clean code principles
+- Comprehensive test suite (Unit and Behat tests)
+- RESTful API endpoints
+- Value Objects for domain validation
+- Repository pattern implementation
+
+## 📋 Requirements
 
 - PHP 8.4 or higher (^8.4)
 - Laravel 12.0
 - Composer
 - SQLite
 
-## Installation
+## 🛠️ Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/laurazapa/thn.git
+cd thn
 ```
 
-2. Install PHP dependencies:
+2. Install dependencies:
+
 ```bash
 composer install
 ```
 
-3. Create environment files:
+3. Set up environment:
+
 ```bash
 cp .env.example .env
 cp .env.behat.example .env.behat
-```
-
-4. Generate application key:
-```bash
 php artisan key:generate
 ```
 
-5. Create SQLite database:
+4. Set up databases:
+
 ```bash
+# Main database
 touch database/database.sqlite
-```
-
-6. Run migrations:
-```bash
 php artisan migrate
-```
 
-7. Create SQLite database for Behat:
-```bash
+# Test database
 touch database/database_behat.sqlite
-```
-
-8. Run migrations for Behat tests:
-```bash
 php artisan migrate --env=behat
 ```
 
-## Development
+5. Seed the database with example data:
 
-To start the development server:
+```bash
+php artisan db:seed
+```
+
+## 🔧 Development
+
+Start the development server:
 
 ```bash
 php artisan serve
 ```
 
-## Testing
+The application will be available at `http://localhost:8000` (or the port you specify).
 
-### Running Behat Tests
+## 📡 API Endpoints
 
-To run all Behat tests:
+You can test the API endpoints using tools like Postman. Here are some example endpoints with real data from the seeder:
 
 ```bash
+# Get hotel information (example)
+GET http://localhost:8000/api/hotels/5a69179a-3b9d-4c0e-960d-91649eaab013
+
+# Get user booking statistics per hotel
+GET http://localhost:8000/api/hotels/user-count-list
+
+# Create bookings
+POST http://localhost:8000/api/hotels/bookings
+
+# Example JSON body for POST /api/hotels/bookings
+{
+  "bookings": [
+    {
+      "userId": "9d491317-a39b-4ffd-91fe-9a91a5d21ece",
+      "roomId": "4f89e181-935d-4f1b-b72a-dfc34c16fca2",
+      "checkInDate": "2025-12-07",
+      "checkOutDate": "2025-12-08"
+    },
+    {
+      "userId": "9d491317-a39b-4ffd-91fe-9a91a5d21ece",
+      "roomId": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+      "checkInDate": "2026-04-04",
+      "checkOutDate": "2026-04-05"
+    }
+  ]
+}
+```
+
+## 🏗️ Architecture
+
+The project follows a DDD structure with separation of concerns:
+
+```
+src/
+├── Bookings/           # Booking bounded context
+│   ├── Application/    # Use cases and DTOs
+│   ├── Domain/         # Entities, Value Objects, and Domain Services
+│   └── Infrastructure/ # Repository implementations
+├── Hotels/             # Hotel bounded context
+├── Users/              # Users bounded context
+└── Shared/             # Shared domain code
+```
+
+## 🧪 Testing
+
+The project includes a comprehensive test suite:
+
+```bash
+# Run PHPUnit tests
+./vendor/bin/phpunit
+
+# Run Behat tests
 APP_ENV=behat ./vendor/bin/behat
 ```
 
-### Running PHPUnit Tests
+## 💡 Things to Improve
 
-To run PHPUnit tests:
-
-```bash
-./vendor/bin/phpunit
-```
-
-### Testing the Application
-
-The application will be available at `http://localhost:8000`
-
-You can test the API endpoints using tools like Postman. Here are some example endpoints:
-
-```bash
-# Get the basic information of a hotel
-curl http://localhost:8000/api/hotels/{hotelUuid}
-
-# Get how many users have booked rooms per hotel
-curl http://localhost:8000/api/api/hotels/user-count-list
-```
-
-## Project Structure
-
-The project follows a DDD structure with the following main directories:
-
-- `apps/` - Contains different bounded contexts
-- `src/` - Shared domain code
-- `tests/` - Test suites including Behat and PHPUnit tests
-- `config/` - Application configuration
-- `database/` - Database migrations and seeders
+- Decouple domain entities from Laravel Eloquent (currently, domain models extend Eloquent's Model)
+- Implement authentication and authorization
+- Improve error handling and logging
