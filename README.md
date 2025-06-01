@@ -123,11 +123,15 @@ src/
 The project includes a comprehensive test suite:
 
 ```bash
-# Run PHPUnit tests
+# Run all PHPUnit tests
 ./vendor/bin/phpunit
+# Run specific PHPUnit test (same but with path from content root)
+./vendor/bin/phpunit tests/Unit/Hotels/Hotels/Application/UseCase/GetHotelUseCaseTest.php
 
-# Run Behat tests
+# Run all Behat tests
 APP_ENV=behat ./vendor/bin/behat
+#Run specific Behat test (same but with path from content root)
+APP_ENV=behat ./vendor/bin/behat tests/Behat/Features/Hotels/get_hotel.feature
 ```
 
 ## 💡 Things to Improve
