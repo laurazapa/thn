@@ -108,63 +108,35 @@ POST http://localhost:8000/api/hotels/bookings
 ### GET /hotels/user-count-list
 ```mermaid
 flowchart TD
-    A[Client] -->|GET /hotels/user-count-list| B[GetHotelUserCountListController]
-    B -->|Execute| C[GetHotelUserCountListUseCase]
-    C -->|Execute| D[GetHotelUserCountListService]
-    D -->|getUniqueUsersPerHotel| E[HotelRepository]
-    E -->|Query DB| F[(Database)]
-    F -->|Return Results| E
-    E -->|Return HotelUserCount[]| D
-    D -->|Return Response| C
-    C -->|Return JSON Response| B
+    A[Client] -->|GET /hotels/user-count-list| B[Controller]
+    B -->|Get User Counts| C[Use Case]
+    C -->|Query Data| D[Repository]
+    D -->|Return Data| C
+    C -->|Format Response| B
     B -->|Return 200| A
 ```
 
 ### GET /hotels/{uuid}
 ```mermaid
 flowchart TD
-    A[Client] -->|GET /hotels/{uuid}| B[GetHotelController]
-    B -->|Extract UUID| C[GetHotelUseCase]
-    C -->|Execute| D[FindHotelService]
-    D -->|Find Hotel| E[HotelRepository]
-    E -->|Query DB| F[(Database)]
-    F -->|Return Hotel| E
-    E -->|Return Hotel Entity| D
-    D -->|Return Response| C
-    C -->|Transform to Response| G[GetHotelUseCaseResponse]
-    G -->|Return JSON Response| B
+    A[Client] -->|GET /hotels/{uuid}| B[Controller]
+    B -->|Get Hotel Info| C[Use Case]
+    C -->|Find Hotel| D[Repository]
+    D -->|Return Hotel| C
+    C -->|Format Response| B
     B -->|Return 200| A
 ```
 
 ### POST /bookings
 ```mermaid
 flowchart TD
-    A[Client] -->|POST /bookings| B[CreateBookingListController]
-    B -->|Validate Request| C[CreateBookingListControllerRequest]
-    C -->|Map Request| D[CreateBookingListRequestMapper]
-    D -->|Transform| E[CreateBookingListUseCase]
-    E -->|Validate All Bookings| F[ValidateBookingService]
-    F -->|Check Room Availability| G[BookingRepository]
-    G -->|Query DB| H[(Database)]
-    H -->|Return Results| G
-    G -->|Return Validation| F
-    F -->|Return Validation Result| E
-    
-    E -->|If Valid| I[Transaction Manager]
-    I -->|For Each Booking| J[CreateBookingService]
-    J -->|Find Room| K[FindRoomService]
-    K -->|Get Hotel ID| L[Room Repository]
-    L -->|Query DB| H
-    H -->|Return Room| L
-    L -->|Return Hotel ID| K
-    K -->|Return Room Info| J
-    J -->|Create Booking| M[BookingRepository]
-    M -->|Save to DB| H
-    H -->|Return Booking| M
-    M -->|Return Created Booking| J
-    J -->|Return Booking ID| I
-    I -->|Return All IDs| E
-    E -->|Return Response| B
+    A[Client] -->|POST /bookings| B[Controller]
+    B -->|Validate Request| C[Use Case]
+    C -->|Validate Bookings| D{Valid?}
+    D -->|No| E[Return Errors]
+    D -->|Yes| F[Save Bookings]
+    F -->|Return IDs| C
+    C -->|Return Response| B
     B -->|Return 201/400| A
 ```
 
