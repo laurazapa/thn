@@ -105,17 +105,6 @@ POST http://localhost:8000/api/hotels/bookings
 
 ## 📊 API Flow Diagrams
 
-### GET /hotels/user-count-list
-```mermaid
-flowchart TD
-    A[Client] -->|GET /hotels/user-count-list| B[Controller]
-    B -->|Get User Counts| C[Use Case]
-    C -->|Query Data| D[Repository]
-    D -->|Return Data| C
-    C -->|Format Response| B
-    B -->|Return 200| A
-```
-
 ### GET /hotels/{uuid}
 ```mermaid
 flowchart TD
@@ -127,15 +116,27 @@ flowchart TD
     B -->|Return 200| A
 ```
 
+### GET /hotels/user-count-list
+```mermaid
+flowchart TD
+    A[Client] -->|GET /hotels/user-count-list| B[Controller]
+    B -->|Get User Counts| C[Use Case]
+    C -->|Query Data| D[Repository]
+    D -->|Return Data| C
+    C -->|Format Response| B
+    B -->|Return 200| A
+```
+
 ### POST /bookings
 ```mermaid
 flowchart TD
     A[Client] -->|POST /bookings| B[Controller]
-    B -->|Validate Request| C[Use Case]
+    B -->|Process Request| C[Use Case]
     C -->|Validate Bookings| D{Valid?}
-    D -->|No| E[Return Errors]
+    D -->|No| E[Format Error Response]
     D -->|Yes| F[Save Bookings]
     F -->|Return IDs| C
+    E -->|Return Response| B
     C -->|Return Response| B
     B -->|Return 201/400| A
 ```
