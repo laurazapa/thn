@@ -108,7 +108,7 @@ POST http://localhost:8000/api/hotels/bookings
 ### GET /hotels/{uuid}
 ```mermaid
 flowchart TD
-    A[Client] -->|GET /hotels/{uuid}| B[Controller]
+    A[Client] -->|GET hotel by ID| B[Controller]
     B -->|Get Hotel Info| C[Use Case]
     C -->|Find Hotel| D[Repository]
     D -->|Return Hotel| C
@@ -119,7 +119,7 @@ flowchart TD
 ### GET /hotels/user-count-list
 ```mermaid
 flowchart TD
-    A[Client] -->|GET /hotels/user-count-list| B[Controller]
+    A[Client] -->|GET user counts| B[Controller]
     B -->|Get User Counts| C[Use Case]
     C -->|Query Data| D[Repository]
     D -->|Return Data| C
@@ -130,7 +130,7 @@ flowchart TD
 ### POST /bookings
 ```mermaid
 flowchart TD
-    A[Client] -->|POST /bookings| B[Controller]
+    A[Client] -->|POST bookings| B[Controller]
     B -->|Process Request| C[Use Case]
     C -->|Validate Bookings| D{Valid?}
     D -->|No| E[Format Error Response]
