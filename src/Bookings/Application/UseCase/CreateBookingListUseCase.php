@@ -45,8 +45,8 @@ class CreateBookingListUseCase
      *
      * The process follows these steps:
      * 1. Validates all bookings in the list
-     * 2. If any validation fails, returns all errors
-     * 3. If all validations pass, creates all bookings in a single transaction
+     * 2. If any validation fails, returns a failed response with all errors
+     * 3. If all validations pass, creates all bookings in a single transaction and returns a success response with IDs
      *
      * @param CreateBookingListUseCaseRequest $request The request containing the list of bookings to create
      * @return CreateBookingListUseCaseResponse Response containing success status and either booking IDs or errors

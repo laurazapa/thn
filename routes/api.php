@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
  * API Routes for the Hotel Booking System.
  *
  * This file defines all the API endpoints for the application.
- * Routes are grouped by their domain (Hotels, Bookings).
+ * Routes are grouped by their domain (Hotels and Bookings).
  *
  * Available endpoints:
  * - GET /hotels/user-count-list: Get list of hotels with their unique user counts

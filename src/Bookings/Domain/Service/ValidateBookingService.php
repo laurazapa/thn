@@ -26,7 +26,7 @@ class ValidateBookingService
      * Validates that:
      * 1. Booking dates are not in the past
      * 2. Room is available for the selected dates
-     * 
+     *
      * @param ValidateBookingServiceRequest $request The booking request to validate
      * @throws BookingDatesAreInThePastException If check-in date is in the past
      * @throws RoomIsAlreadyBookedInTheseDaysException If room is already booked for the selected dates
@@ -40,7 +40,7 @@ class ValidateBookingService
 
     /**
      * Validates that the booking dates are not in the past.
-     * 
+     *
      * @param ValidateBookingServiceRequest $request The booking request to validate
      * @throws BookingDatesAreInThePastException If check-in date is before today
      */
@@ -58,9 +58,9 @@ class ValidateBookingService
     /**
      * Validates that the room is available for the selected dates.
      * Checks if there are any existing bookings that overlap with the requested dates.
-     * 
+     *
      * @param ValidateBookingServiceRequest $request The booking request to validate
-     * @throws RoomIsAlreadyBookedInTheseDaysException If room is already booked for the selected dates
+     * @throws RoomIsAlreadyBookedInTheseDaysException If the room is already booked for the selected dates
      */
     private function validateRoomIsNotBookedInTheseDates(ValidateBookingServiceRequest $request): void
     {

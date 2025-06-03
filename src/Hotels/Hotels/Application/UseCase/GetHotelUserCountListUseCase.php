@@ -16,7 +16,7 @@ class GetHotelUserCountListUseCase
 {
     /**
      * Creates a new GetHotelUserCountListUseCase instance.
-     * 
+     *
      * @param GetHotelUserCountListService $getHotelUserCountListService The service for getting hotel user counts
      */
     public function __construct(
@@ -28,7 +28,7 @@ class GetHotelUserCountListUseCase
      * Executes the hotel user count list retrieval process.
      *
      * The process follows these steps:
-     * 1. Retrieves the list of hotel user counts using the service
+     * 1. Retrieves the list of hotel user counts using a service
      * 2. Transforms the service response into a use case response
      *
      * @return GetHotelUserCountListUseCaseResponse Response containing the list of hotel user counts

@@ -20,7 +20,7 @@ class GetHotelUseCase
 {
     /**
      * Creates a new GetHotelUseCase instance.
-     * 
+     *
      * @param FindHotelService $findHotelService The service for finding hotels
      */
     public function __construct(
@@ -47,7 +47,7 @@ class GetHotelUseCase
 
     /**
      * Retrieves a hotel using the find hotel service.
-     * 
+     *
      * This method:
      * 1. Creates a HotelId value object from the request
      * 2. Executes the find hotel service with room relations
@@ -72,13 +72,13 @@ class GetHotelUseCase
 
     /**
      * Converts a hotel entity to a use case response.
-     * 
+     *
      * This method transforms the domain entity into a response DTO by:
      * 1. Extracting all required hotel properties
      * 2. Creating a new response instance with the extracted data
      *
      * @param Hotel $hotel The hotel entity to convert
-     * @return GetHotelUseCaseResponse The response containing hotel information
+     * @return GetHotelUseCaseResponse The response containing the needed hotel information
      */
     private function hotelConverter(Hotel $hotel): GetHotelUseCaseResponse
     {

@@ -5,7 +5,7 @@ A Laravel-based hotel management system built with Domain-Driven Design (DDD) pr
 ## 🚀 Features
 
 - Hotel management with rooms and bookings
-- Domain-Driven Design architecture
+- Domain-Driven Design (DDD) principles with pragmatic implementation
 - Clean code principles
 - Comprehensive test suite (Unit and Behat tests)
 - RESTful API endpoints
@@ -143,7 +143,17 @@ flowchart TD
 
 ## 🏗️ Architecture
 
-The project follows a DDD structure with separation of concerns:
+The project follows a pragmatic DDD approach with:
+
+- Bounded contexts (Hotels, Bookings, Users)
+- Proper layering (Application, Domain, Infrastructure)
+- Rich domain model with Value Objects and encapsulated business logic
+- Repository pattern for data access
+- DTOs for layer communication
+
+While maintaining DDD principles, the implementation makes some pragmatic choices:
+- Domain entities are coupled to Laravel's Eloquent for practical reasons
+- Infrastructure layer uses Eloquent for practical reasons
 
 ```
 src/
@@ -158,7 +168,7 @@ src/
 
 ## 🧪 Testing
 
-The project includes a comprehensive test suite:
+The project includes the following test suites:
 
 ```bash
 # Run all PHPUnit tests
@@ -172,7 +182,7 @@ APP_ENV=behat ./vendor/bin/behat
 APP_ENV=behat ./vendor/bin/behat tests/Behat/Features/Hotels/get_hotel.feature
 ```
 
-## 💡 Things to Improve
+## 💡 Some things to Improve
 
 - Decouple domain entities from Laravel Eloquent (currently, domain models extend Eloquent's Model)
 - Implement authentication and authorization

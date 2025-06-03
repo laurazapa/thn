@@ -42,8 +42,9 @@ class FindHotelService
     public function execute(FindHotelServiceRequest $findHotelServiceRequest): FindHotelServiceResponse
     {
         $hotelId = $findHotelServiceRequest->hotelId();
+        $relations = $findHotelServiceRequest->relations();
         $hotel = $this->searchHotelService->execute(
-            new SearchHotelServiceRequest($hotelId, $findHotelServiceRequest->relations()))
+            new SearchHotelServiceRequest($hotelId, $relations))
             ->hotel();
 
         if ($hotel === null) {

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Src\Hotels\Hotels\Application\UseCase\GetHotelUserCountListUseCase;
 
 /**
- * Controller responsible for retrieving a list of hotels with their user counts.
+ * Controller responsible for retrieving a list of hotels with their unique user count.
  */
 class GetHotelUserCountListController
 {

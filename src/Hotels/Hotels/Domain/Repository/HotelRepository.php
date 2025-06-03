@@ -12,7 +12,7 @@ use Src\Hotels\Hotels\Domain\ValueObject\HotelUserCount;
  * Hotel Repository Interface.
  *
  * This interface defines the contract for hotel data access operations.
- * It provides methods for finding hotels and retrieving user statistics.
+ * It provides methods for finding a hotel and retrieving user statistics.
  * Note: While it attempts to follow the Repository pattern, the implementation
  * is not fully decoupled from the ORM as the Hotel entity extends Eloquent's Model.
  */

@@ -13,8 +13,8 @@ use Src\Hotels\Hotels\Domain\ValueObject\HotelUserCount;
  * Eloquent Hotel Repository Implementation.
  *
  * This class implements the HotelRepository interface using Laravel's Eloquent ORM.
- * It provides concrete implementations for hotel persistence operations and
- * hotel statistics retrieval.
+ * It provides concrete implementations for retrieval of a hotel and
+ * hotel user statistics.
  */
 class EloquentHotelRepository implements HotelRepository
 {
