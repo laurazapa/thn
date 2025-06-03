@@ -7,8 +7,8 @@ namespace Tests\Unit\Shared\Common\Domain\ValueObject;
 use Carbon\Carbon;
 
 /**
- * Factory class for generating dates for testing.
- * 
+ * Class for generating dates for testing.
+ *
  * This class provides methods to generate dates for testing purposes,
  * ensuring consistent test data generation across the test suite.
  */

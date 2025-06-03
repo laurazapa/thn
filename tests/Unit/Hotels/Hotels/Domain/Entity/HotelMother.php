@@ -15,7 +15,7 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 use Tests\Unit\Shared\Common\Domain\ValueObject\WordMother;
 
 /**
- * Factory class for creating Hotel test instances.
+ * Class for creating Hotel test instances.
  *
  * This class provides methods to create Hotel entities with random or specific values
  * for testing purposes. It ensures consistent test data generation across the test suite.

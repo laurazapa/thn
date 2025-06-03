@@ -8,8 +8,8 @@ use Faker\Factory;
 use Faker\Generator;
 
 /**
- * Factory class for creating Faker instances.
- * 
+ * Class for creating Faker instances.
+ *
  * This class provides a centralized way to create Faker instances
  * for generating test data across the test suite.
  */
