@@ -23,6 +23,11 @@ return new class extends Migration
      * Constraints:
      * - Foreign keys to users, rooms, and hotels tables with cascade delete
      * - hotel_id is denormalized for improved query performance
+     *
+     * Indices:
+     * - user_id: Indexed to optimize queries that filter or join by user
+     * - room_id: Indexed to optimize queries that filter or join by room
+     * - hotel_id: Indexed to optimize queries that filter or join by hotel
      */
     public function up(): void
     {
