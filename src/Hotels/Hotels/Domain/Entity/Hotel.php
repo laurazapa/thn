@@ -18,10 +18,7 @@ use Src\Hotels\Rooms\Domain\Entity\Room;
  * This class represents a hotel in the domain. The entity encapsulates hotel data
  * and behavior, using value objects for type safety and domain validation.
  *
- * This class is currently coupled to Laravel's Model class for practical reasons:
- * 1. Direct access to Eloquent's powerful relationship system
- * 2. Easy integration with Laravel's seeding system
- * 3. Reduced development time and complexity
+ * This class is currently coupled to Laravel's Model class for practical reasons.
  *
  * While this approach works well for the current needs, a more DDD-compliant
  * approach would be to:

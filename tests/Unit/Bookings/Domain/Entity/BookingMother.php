@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Bookings\Domain\Entity;
 
 use Src\Bookings\Domain\Entity\Booking;
@@ -15,7 +17,7 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\UuidMother;
 
 /**
  * Factory class for creating Booking test instances.
- * 
+ *
  * This class provides methods to create Booking entities with random or specific values
  * for testing purposes. It ensures consistent test data generation across the test suite.
  */

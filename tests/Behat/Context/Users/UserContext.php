@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Behat\Context\Users;
 
 use Behat\Gherkin\Node\TableNode;

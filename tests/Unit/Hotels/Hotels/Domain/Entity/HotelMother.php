@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Hotels\Hotels\Domain\Entity;
 
 use Src\Hotels\Hotels\Domain\Entity\Hotel;
@@ -14,7 +16,7 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\WordMother;
 
 /**
  * Factory class for creating Hotel test instances.
- * 
+ *
  * This class provides methods to create Hotel entities with random or specific values
  * for testing purposes. It ensures consistent test data generation across the test suite.
  */

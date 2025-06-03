@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Users\Domain\Entity;
 
 use Src\Users\Domain\Entity\User;
@@ -12,7 +14,7 @@ use Tests\Unit\Shared\Common\Domain\ValueObject\WordMother;
 
 /**
  * Factory class for creating User test instances.
- * 
+ *
  * This class provides methods to create User entities with random or specific values
  * for testing purposes. It ensures consistent test data generation across the test suite.
  */

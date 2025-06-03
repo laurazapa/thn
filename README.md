@@ -147,7 +147,7 @@ The project follows a pragmatic DDD approach with:
 
 - Bounded contexts (Hotels, Bookings, Users)
 - Proper layering (Application, Domain, Infrastructure)
-- Rich domain model with Value Objects and encapsulated business logic
+- Domain model with Value Objects and encapsulated business logic
 - Repository pattern for data access
 - DTOs for layer communication
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Behat\Context\Bookings;
 
 use Behat\Gherkin\Node\TableNode;
@@ -16,12 +18,12 @@ use Src\Users\Domain\ValueObject\UserId;
 
 /**
  * Behat context for managing booking-related scenarios.
- * 
+ *
  * This context provides step definitions for:
  * - Setting up booking test data
  * - Verifying booking existence
  * - Cleaning up booking data between scenarios
- * 
+ *
  * It handles the creation and validation of bookings in the system
  * for acceptance testing purposes.
  */

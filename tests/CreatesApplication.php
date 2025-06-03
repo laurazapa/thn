@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
@@ -18,4 +20,4 @@ trait CreatesApplication
 
         return $app;
     }
-} 
+}

@@ -8,7 +8,7 @@ use JsonSerializable;
 
 /**
  * Response object for the CreateBookingListUseCase.
- * 
+ *
  * This class represents the result of attempting to create multiple bookings.
  * It implements JsonSerializable to provide a consistent JSON structure
  * for API responses.
@@ -20,15 +20,15 @@ class CreateBookingListUseCaseResponse implements JsonSerializable
      * @param BookingValidationError[] $errorList List of validation errors if any
      */
     public function __construct(
-        private readonly bool $success,
-        private readonly array $bookingIdList = [],
-        private readonly array $errorList = []
+        private bool $success,
+        private array $bookingIdList = [],
+        private array $errorList = []
     ) {
     }
 
     /**
      * Indicates if the booking creation was successful.
-     * 
+     *
      * @return bool True if all bookings were created successfully
      */
     public function success(): bool
@@ -38,7 +38,7 @@ class CreateBookingListUseCaseResponse implements JsonSerializable
 
     /**
      * Gets the list of created booking IDs.
-     * 
+     *
      * @return string[] Array of booking IDs
      */
     public function bookingIdList(): array
@@ -48,7 +48,7 @@ class CreateBookingListUseCaseResponse implements JsonSerializable
 
     /**
      * Gets the list of validation errors.
-     * 
+     *
      * @return BookingValidationError[] Array of validation errors
      */
     public function errorList(): array
@@ -58,7 +58,7 @@ class CreateBookingListUseCaseResponse implements JsonSerializable
 
     /**
      * Converts the response to a JSON-serializable array.
-     * 
+     *
      * @return array The response data in array format
      */
     public function jsonSerialize(): array

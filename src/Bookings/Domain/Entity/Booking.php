@@ -17,10 +17,7 @@ use Src\Users\Domain\ValueObject\UserId;
  * Entity that represents a booking in the system. The entity encapsulates booking data
  * and behavior, using value objects for type safety and domain validation.
  *
- * This class is currently coupled to Laravel's Model class for practical reasons:
- * 1. Direct access to Eloquent's powerful relationship system
- * 2. Easy integration with Laravel's seeding system
- * 3. Reduced development time and complexity
+ * This class is currently coupled to Laravel's Model class for practical reasons.
  *
  * While this approach works well for the current needs, a more DDD-compliant
  * approach would be to:
