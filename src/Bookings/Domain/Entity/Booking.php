@@ -14,25 +14,18 @@ use Src\Hotels\Rooms\Domain\ValueObject\RoomId;
 use Src\Users\Domain\ValueObject\UserId;
 
 /**
- * Entity that represents a booking in the system.
+ * Entity that represents a booking in the system. The entity encapsulates booking data
+ * and behavior, using value objects for type safety and domain validation.
  *
  * This class is currently coupled to Laravel's Model class for practical reasons:
  * 1. Direct access to Eloquent's powerful relationship system
- * 2. Simplified database operations and migrations
- * 3. Easy integration with Laravel's seeding system
- * 4. Reduced development time and complexity
+ * 2. Easy integration with Laravel's seeding system
+ * 3. Reduced development time and complexity
  *
  * While this approach works well for the current needs, a more DDD-compliant
  * approach would be to:
  * 1. Have a pure domain entity without framework dependencies
  * 2. Use a mapper/transformer to convert between domain entity and ORM model
- * 3. Keep persistence concerns in the infrastructure layer
- *
- * This separation would be beneficial if:
- * - The domain logic becomes more complex
- * - We need to change the persistence mechanism
- * - We want to test domain logic without database dependencies
- * - We need to support multiple persistence implementations
  */
 class Booking extends Model
 {

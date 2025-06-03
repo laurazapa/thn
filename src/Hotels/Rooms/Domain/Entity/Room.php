@@ -12,12 +12,19 @@ use Src\Hotels\Rooms\Domain\ValueObject\RoomLabel;
 
 /**
  * Room Entity.
- * 
- * This class represents a room in a hotel. It extends the Eloquent Model
- * and provides value object wrappers for its attributes.
- * 
- * The room is identified by a unique UUID and belongs to a hotel.
- * Each room has a unique label within its hotel.
+ *
+ * This class represents a room in a hotel. The entity encapsulates room data
+ * and behavior, using value objects for type safety and domain validation.
+ *
+ * This class is currently coupled to Laravel's Model class for practical reasons:
+ * 1. Direct access to Eloquent's powerful relationship system
+ * 2. Easy integration with Laravel's seeding system
+ * 3. Reduced development time and complexity
+ *
+ * While this approach works well for the current needs, a more DDD-compliant
+ * approach would be to:
+ * 1. Have a pure domain entity without framework dependencies
+ * 2. Use a mapper/transformer to convert between domain entity and ORM model
  */
 class Room extends Model
 {
@@ -31,7 +38,7 @@ class Room extends Model
     // Region setters and getters
     /**
      * Gets the room's unique identifier.
-     * 
+     *
      * @return RoomId The room's UUID wrapped in a value object
      */
     public function id(): RoomId
@@ -41,7 +48,7 @@ class Room extends Model
 
     /**
      * Sets the room's unique identifier.
-     * 
+     *
      * @param RoomId $id The room's UUID wrapped in a value object
      * @return self For method chaining
      */
@@ -52,7 +59,7 @@ class Room extends Model
 
     /**
      * Gets the ID of the hotel this room belongs to.
-     * 
+     *
      * @return HotelId The hotel's UUID wrapped in a value object
      */
     public function hotelId(): HotelId
@@ -62,7 +69,7 @@ class Room extends Model
 
     /**
      * Sets the ID of the hotel this room belongs to.
-     * 
+     *
      * @param HotelId $label The hotel's UUID wrapped in a value object
      * @return self For method chaining
      */
@@ -73,7 +80,7 @@ class Room extends Model
 
     /**
      * Gets the room's label within its hotel.
-     * 
+     *
      * @return RoomLabel The room's label wrapped in a value object
      */
     public function roomLabel(): RoomLabel
@@ -83,7 +90,7 @@ class Room extends Model
 
     /**
      * Sets the room's label within its hotel.
-     * 
+     *
      * @param RoomLabel $label The room's label wrapped in a value object
      * @return self For method chaining
      */
@@ -97,7 +104,7 @@ class Room extends Model
     // Region relations
     /**
      * Gets the relationship to the hotel this room belongs to.
-     * 
+     *
      * @return BelongsTo The Eloquent relationship to the Hotel model
      */
     public function hotel(): BelongsTo

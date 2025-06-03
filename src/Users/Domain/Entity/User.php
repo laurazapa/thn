@@ -12,11 +12,18 @@ use Src\Users\Domain\ValueObject\UserName;
 /**
  * User Entity.
  *
- * This class represents a user in the system. It extends the Eloquent Model
- * and provides value object wrappers for its attributes.
+ * This class represents a user in the system. The entity encapsulates user data
+ * and behavior, using value objects for type safety and domain validation.
  *
- * The user is identified by a unique UUID and has basic information
- * like name and email.
+ * This class is currently coupled to Laravel's Model class for practical reasons:
+ * 1. Direct access to Eloquent's powerful relationship system
+ * 2. Easy integration with Laravel's seeding system
+ * 3. Reduced development time and complexity
+ *
+ * While this approach works well for the current needs, a more DDD-compliant
+ * approach would be to:
+ * 1. Have a pure domain entity without framework dependencies
+ * 2. Use a mapper/transformer to convert between domain entity and ORM model
  */
 class User extends Model
 {
